@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Webview html</title>
+</head>
+<body>
+    <p>
+        <button id="confirm">confirm</button>
+    </p>
+    <p>
+        <button id="open_wechat">打开微信朋友圈</button>
+    </p>
+    <p>
+        <button id="open_douyin">打开抖音搜索页</button>
+    </p>
+    <p>
+        <button id="open_browser">用默认浏览器打开 flutter.dev</button>
+    </p>
+
+    <p>
+        <button id="exit">关闭窗口</button>
+    </p>
+    <ul id="call_me">
+
+    </ul>
+    <a href="https://www.baidu.com">百度一下，你就知道</a>
+    <script src="/prime-sdk.js"></script>
+    <script>
+        function callMe() {
+            document.getElementById('call_me').innerHTML += '<li>You called! </li>';
+        }
+       ;(function () {
+            var confirmBtn =  document.getElementById('confirm');
+            var openWechatBtn =  document.getElementById('open_wechat');
+            var openDouyinBtn =  document.getElementById('open_douyin');
+            var openBrowserBtn =  document.getElementById('open_browser');
+            var exitBtn =  document.getElementById('exit');
+            confirmBtn.addEventListener('click', function () {
+                PrimeSdk.confirm("Hello");
+            }, false);
+            openWechatBtn.addEventListener('click', function () {
+                PrimeSdk.openSchemaUrl("weixin://dl/moments");
+            }, false);
+            openDouyinBtn.addEventListener('click', function () {
+                PrimeSdk.openSchemaUrl("snssdk1128://search");
+            }, false);
+            openBrowserBtn.addEventListener('click', function () {
+                PrimeSdk.openSchemaUrl("https://flutter.dev");
+            }, false);
+            exitBtn.addEventListener('click', function () {
+                PrimeSdk.exit();
+            }, false);
+        })();
+    </script>
+</body>
+</html>
